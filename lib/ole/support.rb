@@ -19,7 +19,7 @@ end
 class File # :nodoc:
 	# for interface consistency with StringIO etc (rather than adding #stat
 	# to them). used by RangesIO.
-	unless File.method_defined?(:size)
+	unless File.method_defined?(:size) or (RUBY_PLATFORM =~ /java/).nil?
 		def size
 			stat.size
 		end
